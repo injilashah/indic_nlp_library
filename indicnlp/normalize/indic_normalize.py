@@ -850,31 +850,31 @@ class UrduNormalizer(NormalizerI):
         self.lang = lang
         self.remove_nuktas = remove_nuktas
     
-        from urduhack.normalization import (
-            remove_diacritics,
+        from content.Kashmiri_Text_Craft.kashmiri.normalization import (
+            
             normalize_characters,
             normalize_combine_characters
         ) # TODO: Use only required normalizers
-        from urduhack.preprocessing import (
+        from content.Kashmiri_Text_Craft.kashmiri.preprocess.preprocessing import (
             normalize_whitespace,
             digits_space,
             all_punctuations_space,
             english_characters_space
         )
+        
         self.normalize_whitespace = normalize_whitespace
         self.digits_space = digits_space
         self.all_punctuations_space = all_punctuations_space
         self.english_characters_space = english_characters_space
 
-        self.remove_diacritics = remove_diacritics
+        
         self.normalize_characters = normalize_characters
         self.normalize_combine_characters = normalize_combine_characters
 
     def normalize(self, text):
         text = self._normalize_punctuations(text)
         text = self.normalize_whitespace(text)
-        if self.remove_nuktas:
-            text = self.remove_diacritics(text)
+        
         text = self.normalize_characters(text)
         text = self.normalize_combine_characters(text)
         text = self.digits_space(text)
