@@ -850,7 +850,7 @@ class UrduNormalizer(NormalizerI):
         self.lang = lang
         self.remove_nuktas = remove_nuktas
     
-        from content.Kashmiri_Text_Craft.kashmiri.normalization import (
+        from .normalization import (
             
             normalize_characters,
             normalize_combine_characters
